@@ -1,0 +1,28 @@
+---
+# Shared definition block
+# This is where you would define any attributes that all your jobs will 
+# inherit.
+shared:
+  # We specify a common Ruby Docker image for our Jobs. It takes the form of
+  # "repo_name:tag_label", where the "tag_label" is optional.
+  # Docker image - https://hub.docker.com/_/ruby/
+  image: ruby:2
+
+# Jobs definition block
+# All pipelines have "main" by default, and is implicitly defined.
+jobs:
+  # We explicitly define "main" in our configuration so that it does what we want
+  # it to do.
+  main:
+    # Steps is the ordered list of commands to execute.
+    # Each step takes the form "step_name: command_to_run". The "step_name" is a
+    # convient label to reference it by. The "command_to_run" is the single 
+    # command that is executed during the step.
+    steps:
+      # Our "bundle_install" step is first in the list. It installs your Gem
+      # dependencies
+      - bundle_install: bundle install
+      # The next step is "rake". It runs the default rake task defined in your
+      # Rakefile
+      - rake: bundle exec rake
+
