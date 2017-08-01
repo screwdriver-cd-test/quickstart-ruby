@@ -6,7 +6,7 @@ shared:
   # We specify a common Ruby Docker image for our Jobs. It takes the form of
   # "repo_name:tag_label", where the "tag_label" is optional.
   # Docker image - https://hub.docker.com/_/ruby/
-  image: ruby:2
+  image: ruby:2.3-alpine
 
 # Jobs definition block
 # All pipelines have "main" by default, and is implicitly defined.
